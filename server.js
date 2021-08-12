@@ -7,9 +7,15 @@ const languages = require("./routes/languages");
 const PORT = process.env.PORT || 5000;
 
 const app = express();
-app.use(cors());
 
 app.use(express.json());
+
+const corsOptions = {
+  origin: "https://miscommunication.netlify.app",
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 app.use("/users", users);
 app.use("/convert", convert);

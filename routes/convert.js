@@ -2,7 +2,6 @@ const express = require("express");
 const mysqlDB = require("../db");
 const router = express.Router();
 const chkchars = require("chkchars");
-const cors = require("cors");
 
 const numbers = {
   1: "one",
@@ -28,7 +27,7 @@ const num_array = [
   "nine",
   "zero",
 ];
-router.get("/encode/:lang", cors(), (req, res) => {
+router.get("/encode/:lang", (req, res) => {
   const { phrase } = req.query;
   const { lang } = req.params;
   let purified_array = [];
@@ -71,7 +70,7 @@ router.get("/encode/:lang", cors(), (req, res) => {
   }
 });
 
-router.post("/decode/:lang", cors(), async (req, res) => {
+router.post("/decode/:lang", async (req, res) => {
   const { phrase } = req.body;
   const { lang } = req.params;
   const length = await getLength(lang);
