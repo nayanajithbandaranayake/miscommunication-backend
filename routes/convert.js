@@ -70,7 +70,7 @@ router.get("/encode/:lang", (req, res) => {
   }
 });
 
-router.get("/decode/:lang", async (req, res) => {
+router.post("/decode/:lang", async (req, res) => {
   const { phrase } = req.body;
   const { lang } = req.params;
   const length = await getLength(lang);
