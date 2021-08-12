@@ -14,7 +14,7 @@ const corsOptions = {
   origin: "https://miscommunication.netlify.app",
   optionsSuccessStatus: 200,
 };
-
+app.options("*", cors(corsOptions));
 app.use(cors(corsOptions));
 
 app.use("/users", users);
